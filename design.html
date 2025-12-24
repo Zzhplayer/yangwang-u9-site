@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外观设计 | 仰望U9 YANGWANG</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="design-page">
+    <!-- 精密网格背景 -->
+    <div class="precision-grid"></div>
+    <div class="energy-overlay"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-main">YANGWANG</span>
+                <span class="logo-accent">U9</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="performance.html">性能</a></li>
+                <li><a href="design.html" class="active">设计</a></li>
+                <li><a href="interior.html">内饰</a></li>
+                <li><a href="story.html">品牌</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 设计页面头部 - 工程风格 -->
+    <header class="design-header">
+        <div class="design-header-top">
+            <div class="design-coords">
+                <span>X: 4966mm</span>
+                <span>Y: 2024mm</span>
+                <span>Z: 1295mm</span>
+            </div>
+            <div class="design-badge">AERODYNAMICS</div>
+        </div>
+        <div class="design-hero-section">
+            <div class="design-hero-visual">
+                <img src="images/design-aero-new.png" alt="Aerodynamic Design" class="design-hero-img">
+                <div class="airflow-lines">
+                    <svg class="airflow-svg" viewBox="0 0 1200 600">
+                        <defs>
+                            <linearGradient id="airflowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#9d4edd;stop-opacity:0"/>
+                                <stop offset="50%" style="stop-color:#9d4edd;stop-opacity:0.8"/>
+                                <stop offset="100%" style="stop-color:#9d4edd;stop-opacity:0"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="airflow-path" d="M0,100 Q300,80 600,100 T1200,100" fill="none" stroke="url(#airflowGrad)" stroke-width="2"/>
+                        <path class="airflow-path" d="M0,150 Q300,130 600,150 T1200,150" fill="none" stroke="url(#airflowGrad)" stroke-width="1.5" style="animation-delay: 0.5s"/>
+                        <path class="airflow-path" d="M0,200 Q300,180 600,200 T1200,200" fill="none" stroke="url(#airflowGrad)" stroke-width="1" style="animation-delay: 1s"/>
+                        <path class="airflow-path" d="M0,400 Q300,420 600,400 T1200,400" fill="none" stroke="url(#airflowGrad)" stroke-width="2"/>
+                        <path class="airflow-path" d="M0,450 Q300,470 600,450 T1200,450" fill="none" stroke="url(#airflowGrad)" stroke-width="1.5" style="animation-delay: 0.5s"/>
+                        <path class="airflow-path" d="M0,500 Q300,520 600,500 T1200,500" fill="none" stroke="url(#airflowGrad)" stroke-width="1" style="animation-delay: 1s"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="design-hero-content">
+                <span class="design-subtitle">Cd 0.28</span>
+                <h1 class="design-title-main">
+                    <span class="design-title-line">AIR</span>
+                    <span class="design-title-line">SCULPTED</span>
+                </h1>
+                <p class="design-hero-desc">每一道线条，都是对空气的精准对话</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 空气动力学详解 - 左右交替布局 -->
+    <section class="aero-details">
+        <div class="aero-detail-item aero-right">
+            <div class="aero-visual">
+                <div class="aero-diagram">
+                    <svg viewBox="0 0 400 300">
+                        <!-- 车身轮廓 -->
+                        <path d="M50,200 Q80,100 150,80 L250,80 Q350,100 350,200" fill="none" stroke="#9d4edd" stroke-width="2"/>
+                        <!-- 气流箭头 -->
+                        <path d="M30,120 L100,120" fill="none" stroke="#9d4edd" stroke-width="1" stroke-dasharray="5,5"/>
+                        <path d="M30,180 L100,160" fill="none" stroke="#9d4edd" stroke-width="1" stroke-dasharray="5,5"/>
+                        <!-- 标注 -->
+                        <circle cx="150" cy="80" r="5" fill="#9d4edd"/>
+                        <text x="160" y="75" fill="#9d4edd" font-size="12">前唇扰流</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="aero-content">
+                <span class="aero-number">01</span>
+                <h3>主动式前唇</h3>
+                <p>根据车速自动调节角度，优化前部气流分配，减少湍流产生，提升高速稳定性。</p>
+            </div>
+        </div>
+
+        <div class="aero-detail-item aero-left">
+            <div class="aero-visual">
+                <div class="aero-diagram">
+                    <svg viewBox="0 0 400 300">
+                        <!-- 车身轮廓 -->
+                        <path d="M50,200 Q150,80 200,80 Q250,80 350,200" fill="none" stroke="#9d4edd" stroke-width="2"/>
+                        <!-- 侧裙线条 -->
+                        <line x1="100" y1="180" x2="300" y2="180" stroke="#9d4edd" stroke-width="3"/>
+                        <path d="M100,180 L90,190 L110,190 Z" fill="#9d4edd"/>
+                        <text x="150" y="220" fill="#9d4edd" font-size="12">侧裙导流</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="aero-content">
+                <span class="aero-number">02</span>
+                <h3>侧裙导流板</h3>
+                <p>引导车侧气流快速通过，减少车身侧面的气流扰动，优化整车空气动力学表现。</p>
+            </div>
+        </div>
+
+        <div class="aero-detail-item aero-right">
+            <div class="aero-visual">
+                <div class="aero-diagram">
+                    <svg viewBox="0 0 400 300">
+                        <!-- 车身轮廓 -->
+                        <path d="M50,200 Q150,80 200,80 Q250,80 350,200 L350,230 L50,230 Z" fill="none" stroke="#9d4edd" stroke-width="2"/>
+                        <!-- 扩散器 -->
+                        <path d="M100,230 L200,250 L300,230" fill="none" stroke="#9d4edd" stroke-width="2"/>
+                        <line x1="150" y1="235" x2="150" y2="250" stroke="#9d4edd" stroke-width="1"/>
+                        <line x1="200" y1="235" x2="200" y2="255" stroke="#9d4edd" stroke-width="1"/>
+                        <line x1="250" y1="235" x2="250" y2="250" stroke="#9d4edd" stroke-width="1"/>
+                        <text x="140" y="270" fill="#9d4edd" font-size="12">底盘扩散器</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="aero-content">
+                <span class="aero-number">03</span>
+                <h3>底盘扩散器</h3>
+                <p>加速车底气流通过速度，形成低压区，增加车辆下压力，提升高速行驶稳定性。</p>
+            </div>
+        </div>
+
+        <div class="aero-detail-item aero-left">
+            <div class="aero-visual">
+                <div class="aero-diagram">
+                    <svg viewBox="0 0 400 300">
+                        <!-- 车身轮廓 -->
+                        <path d="M50,200 Q150,80 200,80 Q250,80 350,200" fill="none" stroke="#9d4edd" stroke-width="2"/>
+                        <!-- 尾翼 -->
+                        <line x1="280" y1="100" x2="380" y2="80" stroke="#9d4edd" stroke-width="3"/>
+                        <line x1="280" y1="105" x2="380" y2="85" stroke="#9d4edd" stroke-width="2"/>
+                        <line x1="300" y1="102" x2="300" y2="130" stroke="#9d4edd" stroke-width="2"/>
+                        <text x="280" y="60" fill="#9d4edd" font-size="12">主动尾翼</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="aero-content">
+                <span class="aero-number">04</span>
+                <h3>主动式尾翼</h3>
+                <p>多级可调尾翼，根据驾驶模式自动调整角度，在需要时提供最大下压力，直线加速时自动收起降低风阻。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 车身尺寸图 -->
+    <section class="dimensions-section">
+        <div class="dimensions-wrapper">
+            <h3 class="dimensions-title">车身尺寸</h3>
+            <div class="car-dimensions">
+                <svg viewBox="0 0 800 400" class="dimensions-svg">
+                    <!-- 车身轮廓 -->
+                    <path d="M100,280 Q150,150 250,130 L550,130 Q700,150 700,280"
+                          fill="none" stroke="#9d4edd" stroke-width="2" opacity="0.5"/>
+                    <!-- 长度标注 -->
+                    <line x1="100" y1="320" x2="700" y2="320" stroke="#9d4edd" stroke-width="1"/>
+                    <line x1="100" y1="310" x2="100" y2="330" stroke="#9d4edd" stroke-width="1"/>
+                    <line x1="700" y1="310" x2="700" y2="330" stroke="#9d4edd" stroke-width="1"/>
+                    <text x="400" y="345" fill="#9d4edd" text-anchor="middle" font-size="14">4966mm</text>
+
+                    <!-- 宽度标注 -->
+                    <line x1="750" y1="130" x2="750" y2="280" stroke="#9d4edd" stroke-width="1"/>
+                    <line x1="740" y1="130" x2="760" y2="130" stroke="#9d4edd" stroke-width="1"/>
+                    <line x1="740" y1="280" x2="760" y2="280" stroke="#9d4edd" stroke-width="1"/>
+                    <text x="770" y="210" fill="#9d4edd" font-size="14">2024mm</text>
+
+                    <!-- 高度标注 -->
+                    <line x1="400" y1="100" x2="400" y2="130" stroke="#9d4edd" stroke-width="1"/>
+                    <line x1="390" y1="100" x2="410" y2="100" stroke="#9d4edd" stroke-width="1"/>
+                    <line x1="390" y1="130" x2="410" y2="130" stroke="#9d4edd" stroke-width="1"/>
+                    <text x="400" y="85" fill="#9d4edd" text-anchor="middle" font-size="14">1295mm</text>
+
+                    <!-- 轴距标注 -->
+                    <line x1="200" y1="300" x2="600" y2="300" stroke="#9d4edd" stroke-width="1" stroke-dasharray="5,5"/>
+                    <text x="400" y="295" fill="#9d4edd" text-anchor="middle" font-size="12">2900mm</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- 灯光设计 -->
+    <section class="lighting-section">
+        <div class="lighting-wrapper">
+            <div class="lighting-content">
+                <span class="lighting-label">LIGHTING DESIGN</span>
+                <h2>星际穿越灯光系统</h2>
+                <p>独特的"星际穿越"前大灯造型，贯穿式尾灯带流水转向效果，让每一次出行都成为一场视觉盛宴。</p>
+                <div class="lighting-features">
+                    <div class="lighting-feature">
+                        <span class="light-dot"></span>
+                        <span>矩阵式LED大灯</span>
+                    </div>
+                    <div class="lighting-feature">
+                        <span class="light-dot"></span>
+                        <span>贯穿式日行灯</span>
+                    </div>
+                    <div class="lighting-feature">
+                        <span class="light-dot"></span>
+                        <span>动态迎宾效果</span>
+                    </div>
+                    <div class="lighting-feature">
+                        <span class="light-dot"></span>
+                        <span>流水转向灯</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lighting-visual">
+                <div class="light-preview">
+                    <div class="light-strip light-left"></div>
+                    <div class="light-strip light-right"></div>
+                    <div class="light-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 材质展示 -->
+    <section class="materials-section">
+        <h3 class="materials-title">轻量化材质</h3>
+        <div class="materials-grid">
+            <div class="material-card carbon">
+                <div class="material-pattern"></div>
+                <h4>碳纤维</h4>
+                <p>车身覆盖件</p>
+            </div>
+            <div class="material-card aluminum">
+                <div class="material-pattern"></div>
+                <h4>铝合金</h4>
+                <p>车身框架</p>
+            </div>
+            <div class="material-card ceramic">
+                <div class="material-pattern"></div>
+                <h4>陶瓷复合</h4>
+                <p>刹车系统</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">YANGWANG</span>
+                <span class="footer-tagline">重新定义电动超跑</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="performance.html">性能</a>
+                <a href="design.html">设计</a>
+                <a href="interior.html">内饰</a>
+                <a href="story.html">品牌</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 YANGWANG. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
