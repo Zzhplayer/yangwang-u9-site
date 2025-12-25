@@ -362,6 +362,148 @@ window.addEventListener('resize', () => {
     }, 250);
 });
 
+// ========== 移动端性能优化 ==========
+// 检测移动设备
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+// 移动端特定优化
+if (isMobile || isTouchDevice) {
+    // 禁用复杂的动画效果以提升性能
+    document.documentElement.style.setProperty('--animation-speed', '0.01ms');
+
+    // 简化视差滚动效果
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+            // 移动端只保留基本的滚动效果，减少计算
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('.hero-bg-wrapper');
+            if (heroBg && scrolled < window.innerHeight) {
+                heroBg.style.transform = `translateY(${scrolled * 0.3}px)`; // 减少视差强度
+            }
+        }
+    }, { passive: true }); // 使用被动监听器提升滚动性能
+}
+
+// 触摸事件优化
+if (isTouchDevice) {
+    // 为所有可点击元素添加触摸反馈
+    document.querySelectorAll('.cta-btn, .feature-card, .nav-toggle').forEach(element => {
+        element.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+
+        element.addEventListener('touchend', function() {
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 100);
+        });
+    });
+
+    // 防止双击缩放
+    document.addEventListener('touchend', function(event) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+    let lastTouchEnd = 0;
+}
+
+// 移动端菜单优化
+if (isMobile) {
+    // 防止菜单滚动穿透
+    const navMenu = document.querySelector('.nav-menu');
+    if (navMenu) {
+        navMenu.addEventListener('touchmove', function(e) {
+            if (this.classList.contains('active')) {
+                e.stopPropagation();
+            }
+        }, { passive: false });
+
+        // 点击菜单外部关闭
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') &&
+                !navMenu.contains(e.target) &&
+                !document.querySelector('.nav-toggle').contains(e.target)) {
+                navMenu.classList.remove('active');
+                document.querySelector('.nav-toggle').classList.remove('active');
+            }
+        });
+    }
+
+    // 简化Intersection Observer阈值
+    if (window.innerWidth <= 480) {
+        // 移动端使用更简单的观察器配置
+        const simpleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'none';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .perf-metric-card, .timeline-item').forEach(el => {
+            simpleObserver.observe(el);
+        });
+    }
+}
+
+// 移动端触摸滑动优化（防止页面卡顿）
+let touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener('touchmove', (e) => {
+    const touchEndY = e.touches[0].clientY;
+    const diff = touchStartY - touchEndY;
+
+    // 如果是垂直滑动，优化滚动性能
+    if (Math.abs(diff) > 10) {
+        document.body.style.overscrollBehavior = 'contain';
+    }
+}, { passive: true });
+
+// 移动端图片懒加载优化
+if ('IntersectionObserver' in window && isMobile) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    // 观察所有图片（如果未来添加懒加载）
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// 移动端性能监控（调试用）
+if (isMobile && window.performance) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const perfData = window.performance.timing;
+            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log(`移动端页面加载时间: ${pageLoadTime}ms`);
+
+            if (pageLoadTime > 3000) {
+                console.warn('移动端加载较慢，建议进一步优化');
+            }
+        }, 0);
+    });
+}
+
 // ========== 控制台签名 ==========
 console.log('%c YANGWANG U9 ', 'background: #9d4edd; color: #0a0a0a; font-size: 20px; font-weight: bold; padding: 10px 20px;');
 console.log('%c LUMINOUS PRECISION - Design System Active ', 'background: #0a0a0a; color: #9d4edd; font-size: 12px; padding: 5px 10px;');

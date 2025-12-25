@@ -3142,35 +3142,48 @@ body {
     background: rgba(10,10,10,0.95);
 }
 
-/* ========== RESPONSIVE DESIGN ========== */
-@media (max-width: 1400px) {
+/* ========== RESPONSIVE DESIGN - MOBILE FIRST ========== */
+
+/* Tablet & Desktop - 1024px and above */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 0 40px;
+    }
+
     .hero-content-wrapper,
     .action-section,
     .features-section,
     .brand-preview-section,
-    .main-footer {
-        padding-left: 60px;
-        padding-right: 60px;
+    .main-footer,
+    .perf-header-content,
+    .interior-hero-content,
+    .design-hero-content,
+    .story-hero-content {
+        padding-left: 40px;
+        padding-right: 40px;
     }
-}
 
-@media (max-width: 1200px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .brand-preview-wrapper {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
     }
 
-    .brand-preview-image {
-        max-width: 500px;
-        margin: 0 auto;
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
     }
 }
 
+/* Tablet Portrait - 768px and below */
 @media (max-width: 768px) {
+    /* Navigation - Mobile Menu */
     .nav-menu {
         position: fixed;
         top: 0;
@@ -3182,8 +3195,9 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 40px;
+        gap: 32px;
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -3191,76 +3205,685 @@ body {
     }
 
     .nav-menu a {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
+        font-weight: 600;
     }
 
     .nav-toggle {
         display: flex;
+        z-index: 1000;
     }
 
-    .hero-content-wrapper,
-    .action-section,
-    .features-section,
-    .brand-preview-section,
-    .main-footer {
-        padding-left: 40px;
-        padding-right: 40px;
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* Hero Section */
+    .hero-title {
+        font-size: 2.8rem;
+        line-height: 1.1;
+        letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 1px;
     }
 
     .hero-stats {
         flex-wrap: wrap;
-        gap: 24px;
+        gap: 20px;
+        justify-content: center;
     }
 
-    .features-grid {
-        grid-template-columns: 1fr;
+    .stat-item {
+        min-width: 120px;
     }
 
-    .footer-content {
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 24px;
+        font-size: 1rem;
+    }
+
+    /* Action Section */
+    .action-section {
         flex-direction: column;
         gap: 32px;
+    }
+
+    .action-content {
+        padding: 32px;
+        width: 100%;
+    }
+
+    .action-title {
+        font-size: 2rem;
+    }
+
+    .action-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .feature-card {
+        min-height: 300px;
+    }
+
+    .feature-number {
+        font-size: 3rem;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+    }
+
+    /* Brand Preview */
+    .brand-preview-content {
+        padding: 32px;
+    }
+
+    .brand-title {
+        font-size: 2.5rem;
+    }
+
+    .brand-description {
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 24px;
         text-align: center;
     }
 
     .footer-links {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 12px;
     }
 
-    .action-content {
-        padding: 40px 32px;
+    /* Performance Page */
+    .perf-header-content {
+        padding: 24px;
+    }
+
+    .perf-title {
+        font-size: 2.5rem;
+    }
+
+    .perf-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .perf-stat-card {
+        padding: 20px;
+    }
+
+    .perf-stat-value {
+        font-size: 2rem;
+    }
+
+    .perf-cards-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .perf-card {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    /* Design Page */
+    .design-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .aero-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .aero-card {
+        padding: 24px;
+    }
+
+    /* Interior Page */
+    .interior-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .interior-full-item {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .interior-full-image {
+        width: 100%;
+    }
+
+    .interior-full-content {
+        padding: 24px;
+        width: 100%;
+    }
+
+    .interior-title {
+        font-size: 1.8rem;
+    }
+
+    .interior-tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .interior-tech-card {
+        padding: 20px;
+    }
+
+    /* Story Page */
+    .story-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .timeline-content {
+        width: 100%;
+        padding: 24px;
+    }
+
+    .timeline-image {
+        width: 100%;
+    }
+
+    .tech-platforms {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .platform-card {
+        padding: 24px;
+    }
+
+    .vision-content {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .vision-text {
+        width: 100%;
+    }
+
+    .vision-image {
+        width: 100%;
+    }
+
+    /* Section Titles */
+    .section-title {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
     }
 }
 
+/* Mobile Portrait - 480px and below */
 @media (max-width: 480px) {
+    /* Base Layout */
+    body {
+        font-size: 15px;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+    }
+
     .hero-content-wrapper,
     .action-section,
     .features-section,
     .brand-preview-section,
-    .main-footer {
-        padding-left: 24px;
-        padding-right: 24px;
+    .main-footer,
+    .perf-header-content,
+    .interior-hero-content,
+    .design-hero-content,
+    .story-hero-content {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .hero-cta {
-        flex-direction: column;
-        gap: 12px;
+    /* Hero Typography */
+    .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
     }
 
-    .cta-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .hero-stats {
-        gap: 16px;
+    .hero-subtitle {
+        font-size: 0.9rem;
     }
 
     .mini-value {
+        font-size: 1.4rem;
+    }
+
+    .mini-label {
+        font-size: 0.65rem;
+    }
+
+    /* Buttons */
+    .cta-btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+    }
+
+    /* Stats */
+    .stat-item {
+        min-width: 100px;
+    }
+
+    .stat-value {
         font-size: 1.6rem;
     }
 
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    /* Feature Cards */
+    .feature-card {
+        min-height: 250px;
+        padding: 24px;
+    }
+
+    .feature-number {
+        font-size: 2.5rem;
+    }
+
+    .feature-title {
+        font-size: 1.3rem;
+    }
+
+    .feature-description {
+        font-size: 0.9rem;
+    }
+
+    /* Performance Page */
+    .perf-title {
+        font-size: 2rem;
+    }
+
+    .perf-tagline {
+        font-size: 0.9rem;
+    }
+
+    .perf-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .perf-stat-value {
+        font-size: 1.8rem;
+    }
+
+    .perf-stat-label {
+        font-size: 0.85rem;
+    }
+
+    .perf-card-title {
+        font-size: 1.3rem;
+    }
+
+    .perf-card-desc {
+        font-size: 0.9rem;
+    }
+
+    /* Design Page */
+    .design-title {
+        font-size: 2rem;
+    }
+
+    .aero-card {
+        padding: 20px;
+    }
+
+    .aero-value {
+        font-size: 1.8rem;
+    }
+
+    .aero-label {
+        font-size: 0.85rem;
+    }
+
+    /* Interior Page */
+    .interior-title {
+        font-size: 1.5rem;
+    }
+
+    .interior-label {
+        font-size: 0.8rem;
+    }
+
+    .interior-tech-card {
+        padding: 16px;
+    }
+
+    .tech-value {
+        font-size: 1.4rem;
+    }
+
+    /* Story Page */
+    .story-title {
+        font-size: 1.8rem;
+    }
+
+    .timeline-year {
+        font-size: 1.2rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+    .platform-title {
+        font-size: 1.3rem;
+    }
+
+    .platform-desc {
+        font-size: 0.9rem;
+    }
+
+    .vision-title {
+        font-size: 1.8rem;
+    }
+
+    /* Section Headers */
     .section-title {
-        letter-spacing: 4px;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Spacing Adjustments */
+    .hero-content-wrapper {
+        gap: 24px;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .action-content {
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .brand-preview-content {
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .footer-content {
+        padding: 24px;
+        gap: 20px;
+    }
+
+    /* Grid Adjustments */
+    .interior-tech-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .perf-stats-grid {
+        gap: 12px;
+    }
+
+    /* Image Scaling */
+    .hero-img,
+    .action-img,
+    .design-hero-img,
+    .interior-hero-img,
+    .story-hero-img,
+    .tech-visual-img,
+    .vision-image img {
+        max-height: 40vh;
+        object-fit: cover;
+    }
+
+    /* Logo Size */
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    /* Energy Overlay - Reduce on mobile for performance */
+    .energy-overlay {
+        opacity: 0.2;
+        animation: none;
+    }
+
+    .precision-grid {
+        opacity: 0.2;
+        background-size: 30px 30px;
+    }
+}
+
+/* Extra Small Devices - 320px and below */
+@media (max-width: 320px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .cta-btn {
+        font-size: 0.85rem;
+        padding: 12px 16px;
+    }
+
+    .nav-menu a {
+        font-size: 1.4rem;
+    }
+
+    .section-title {
+        font-size: 0.9rem;
+    }
+
+    .stat-item {
+        min-width: 80px;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+    }
+}
+
+/* Landscape Orientation - Additional Optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-content-wrapper {
+        padding-top: 80px;
+        padding-bottom: 40px;
+        gap: 16px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-stats {
+        gap: 12px;
+    }
+
+    .stat-item {
+        min-width: 90px;
+    }
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
+    }
+}
+
+/* High DPI Screens - Retina Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .precision-grid {
+        background-image:
+            linear-gradient(rgba(157,78,221,0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(157,78,221,0.02) 1px, transparent 1px);
+    }
+
+    .hero-title,
+    .section-title,
+    .perf-title,
+    .design-title,
+    .interior-title,
+    .story-title {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* ========== TOUCH OPTIMIZATION ========== */
+/* Improve touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .cta-btn,
+    .nav-toggle,
+    .feature-card,
+    .perf-card,
+    .aero-card,
+    .interior-tech-card,
+    .platform-card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .nav-toggle {
+        padding: 12px;
+    }
+
+    .nav-toggle span {
+        height: 2px;
+    }
+}
+
+/* ========== PERFORMANCE OPTIMIZATIONS FOR MOBILE ========== */
+/* Reduce animations on mobile for better performance */
+@media (max-width: 768px) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .hero-badge,
+    .hero-title,
+    .hero-subtitle,
+    .hero-stats,
+    .hero-cta {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* Reduce blur effects for performance */
+    .navbar,
+    .nav-menu {
+        backdrop-filter: none !important;
+    }
+
+    /* Simplify grid background on mobile */
+    .precision-grid {
+        background-image: linear-gradient(rgba(157,78,221,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    /* Disable energy pulse on mobile */
+    .energy-overlay {
+        animation: none;
+        opacity: 0.2;
+    }
+}
+
+/* ========== SAFARI iOS FIXES ========== */
+/* Fix for Safari iOS specific issues */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 768px) {
+        .hero-section,
+        .perf-header,
+        .interior-hero,
+        .design-hero,
+        .story-hero {
+            height: -webkit-fill-available;
+        }
+
+        .nav-menu {
+            height: -webkit-fill-available;
+        }
+    }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+    .navbar,
+    .energy-overlay,
+    .precision-grid,
+    .nav-toggle,
+    .cta-btn {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .hero-section,
+    .action-section,
+    .features-section,
+    .brand-preview-section {
+        page-break-inside: avoid;
     }
 }
